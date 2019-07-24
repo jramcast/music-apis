@@ -5,9 +5,11 @@ name = "pypi"
 
 [dev-packages]
 "flake8" = "*"
+rope = "*"
 
 [packages]
 spotipy = "*"
+pylast = "*"
 
 [requires]
 python_version = "3.7"
