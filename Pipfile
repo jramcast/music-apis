@@ -10,6 +10,8 @@ rope = "*"
 [packages]
 spotipy = "*"
 pylast = "*"
+google-api-python-client = "*"
+google-auth-oauthlib = "*"
 
 [requires]
 python_version = "3.7"
