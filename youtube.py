@@ -27,10 +27,7 @@ def main():
     api_version = "v3"
     # client_secrets_file = "youtube_oauth_secret.json"
 
-    # # Get credentials and create an API client
-    # flow = google_auth_oauthlib.flow.InstalledAppFlow.from_client_secrets_file(
-    #     client_secrets_file, scopes)
-    # credentials = flow.run_console()
+    # Get token from: https://console.developers.google.com/apis/credentials
     youtube = googleapiclient.discovery.build(
         api_service_name, api_version, developerKey=os.environ["YOUTUBE_API_KEY"])
 
@@ -40,6 +37,17 @@ def main():
     )
     response = request.execute()
 
+    print("VIDEO ---------")
+    pprint(response["items"][0])
+
+    video_id = response["items"][0]["id"]["videoId"]
+
+    print("COMMENTS THREAD -------------")
+    request = youtube.commentThreads().list(
+        videoId=video_id,
+        part="snippet"
+    )
+    response = request.execute()
     pprint(response["items"])
 
 if __name__ == "__main__":
